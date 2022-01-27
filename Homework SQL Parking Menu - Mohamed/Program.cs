@@ -17,7 +17,8 @@ namespace Homework_SQL_Parking_Menu___Mohamed
                     case "1":
                         Input1();
                         break;
-                    case "2":                       
+                    case "2":
+                        Input2();
                         break;
                     case "3":
                         break;
@@ -60,7 +61,6 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             }
             Console.ReadKey();
         }
-
         public static void Input1_2()
         {
             var cities = DataBaseDapper.GetAllCities();
@@ -70,10 +70,9 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             }
             Console.ReadKey();
         }
-
         public static void Input1_3()
         {
-
+            Prints.Print.MenuShowSpot();
             switch (Console.ReadLine())
             {
                 case "1":
@@ -94,6 +93,10 @@ namespace Homework_SQL_Parking_Menu___Mohamed
                     break;
             }
             Console.ReadKey();
+
+        }
+        public static void Input2()
+        {
 
         }
     }

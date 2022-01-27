@@ -43,6 +43,16 @@ namespace Homework_SQL_Parking_Menu___Mohamed.Prints
                 Console.WriteLine("\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.Write("\t\t\t\t\tInput: ");
         }
-     
+
+        public static void MenuShowSpot()
+        {
+            Logo();
+            Console.WriteLine("\n\n\t\t\t\t\t~~~~~~~~~~~~ Spot ~~~~~~~~~~~~");
+                Console.WriteLine("\t\t\t\t\t|  [1] Show All              |");
+                Console.WriteLine("\t\t\t\t\t|  [2] Show Electric         |");
+                Console.WriteLine("\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                   Console.Write("\t\t\t\t\tInput: ");
+        }
+
     }
 }
