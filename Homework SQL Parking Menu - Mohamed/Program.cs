@@ -66,18 +66,30 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             }
             */
 
-            var newCity = new Models.City { CityName = "Ifzan"};
+            //var newCity = new Models.City { CityName = "Rio"};
 
-
+            /*
             int rowsAffected = DataBaseDapper.InsertCity(newCity);
             Console.WriteLine("Antal Städer tillagda: " + rowsAffected);
             Console.WriteLine("----------------------------------------------");
+            */
 
             var listOfCities = DataBaseDapper.GetAllCities();
             foreach (var city in listOfCities)
             {
                 Console.WriteLine($"{city.Id}\t {city.CityName}");
             }
+
+            int test1 = DataBaseDapper.RemoveCity("Ifzan");
+
+            Console.WriteLine(test1);
+            Console.WriteLine("---------------------------------------------");
+            var ParkingHouses = DataBaseDapper.GetAllParkingHouse();
+            foreach (var House in ParkingHouses)
+            {
+                Console.WriteLine($"{House.Id}\t {House.HouseName}\t     {House.CityId}");
+            }
+
         }
     }
 }

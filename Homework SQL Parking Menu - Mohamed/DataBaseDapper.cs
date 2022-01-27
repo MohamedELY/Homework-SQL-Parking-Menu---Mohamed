@@ -12,6 +12,7 @@ namespace Homework_SQL_Parking_Menu___Mohamed
     {
         static string connString = "data source=.\\SQLEXPRESS; initial catalog = Parking2; persist security info = True; Integrated Security = True;";
 
+        #region Car
         //Car
         public static List<Models.Car> GetAllCars()
         {
@@ -23,30 +24,16 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             }
             return cars;
         }
-
-        public static List<Models.AllSpots> GetAllSpots()
+        public static int ParkCar(int carId, int spotId)
         {
-            var sql = @"
-                        SELECT
-                            count(*) AS PlatserPerHus,
-                            ph.HouseName,
-	                        STRING_AGG(ps.SlotNumber, ', ') AS Slots
-                        FROM
-                            ParkingHouses ph
-                        JOIN
-                            ParkingSlots ps ON ph.Id = ps.ParkingHouseId
-                        GROUP BY
-                            ph.HouseName";
-
-            var spotsPerHouse = new List<Models.AllSpots>();
+            int affectedRows = 0;
+            var sql = $"update Cars set ParkingSlotsId = {spotId} where Id = {carId}";
             using (var connection = new SqlConnection(connString))
             {
-                spotsPerHouse = connection.Query<Models.AllSpots>(sql).ToList();
-
+                affectedRows = connection.Execute(sql);
             }
-            return spotsPerHouse;
+            return affectedRows;
         }
-
         public static int InsertCar(Models.Car car)
         {
             int affectedRows = 0;
@@ -66,18 +53,9 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             }
             return affectedRows;
         }
+        #endregion
 
-        public static int ParkCar(int carId, int spotId)
-        {
-            int affectedRows = 0;
-            var sql = $"update Cars set ParkingSlotsId = {spotId} where Id = {carId}";
-            using (var connection = new SqlConnection(connString))
-            {
-                affectedRows = connection.Execute(sql);
-            }
-            return affectedRows;
-        }
-
+        #region City
         //City
         public static List<Models.City> GetAllCities()
         {
@@ -120,10 +98,108 @@ namespace Homework_SQL_Parking_Menu___Mohamed
 
             return affectedRows;
         }
+        #endregion
 
-        //ParkingHouse
+        #region ParkingHouse
+        public static List<Models.ParkingHouse> GetAllParkingHouse()
+        {
+            var sql = "SELECT * FROM ParkingHouses";
+            var Houses = new List<Models.ParkingHouse>();
+            using (var connection = new SqlConnection(connString))
+            {
+                Houses = connection.Query<Models.ParkingHouse>(sql).ToList();
+            }
+            return Houses;
+        }
+        public static int InsertParkeringHouse(Models.ParkingHouse PHouse)
+        {
+            int affectedRows = 0;
 
-        public static 
+            var sql = $"INSERT INTO ParkingHouses (HouseName, CityId) VALUES('{PHouse.HouseName}', {PHouse.CityId})";
 
+            using (var connection = new SqlConnection(connString))
+            {
+                connection.Open();
+                try
+                {
+                    affectedRows = connection.Execute(sql);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            return affectedRows;
+        }
+        #endregion
+
+        #region Spots
+        public static List<Models.AllSpots> GetAllSpots()
+        {
+            var sql = @"
+                        SELECT
+                            count(*) AS PlatserPerHus,
+                            ph.HouseName,
+	                        STRING_AGG(ps.SlotNumber, ', ') AS Slots
+                        FROM
+                            ParkingHouses ph
+                        JOIN
+                            ParkingSlots ps ON ph.Id = ps.ParkingHouseId
+                        GROUP BY
+                            ph.HouseName";
+
+            var spotsPerHouse = new List<Models.AllSpots>();
+            using (var connection = new SqlConnection(connString))
+            {
+                spotsPerHouse = connection.Query<Models.AllSpots>(sql).ToList();
+
+            }
+            return spotsPerHouse;
+        }
+        public static List<Models.AllSpots> GetElectricSpots()
+        {
+            var sql = @"
+                        SELECT
+                            count(*) AS PlatserPerHus,
+                            ph.HouseName,
+	                        STRING_AGG(ps.SlotNumber, ', ') AS Slots
+                        FROM
+                            ParkingHouses ph
+                        JOIN
+                            ParkingSlots ps ON ph.Id = ps.ParkingHouseId
+                        WHERE
+							ps.ElectricOutlet = 1
+                        GROUP BY
+                            ph.HouseName";
+
+            var spotsPerHouse = new List<Models.AllSpots>();
+            using (var connection = new SqlConnection(connString))
+            {
+                spotsPerHouse = connection.Query<Models.AllSpots>(sql).ToList();
+
+            }
+            return spotsPerHouse;
+        }
+        public static int InsertParkingSlot(Models.ParkingSlot parkingSlot)
+        {
+            int affectedRows = 0;
+
+            var sql = $"INSERT INTO ParkingSlots (Id, SlotNumber, ElectricOutlet, ParkingHouseId) VALUES({parkingSlot.SlotNumber}, {parkingSlot.ElectricOutlet}, {parkingSlot.ParkingHouseId})";
+
+            using (var connection = new SqlConnection(connString))
+            {
+                connection.Open();
+                try
+                {
+                    affectedRows = connection.Execute(sql);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            return affectedRows;
+        }
+        #endregion
     }
 }
