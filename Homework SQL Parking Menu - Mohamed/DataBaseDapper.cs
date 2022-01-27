@@ -34,11 +34,21 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             }
             return affectedRows;
         }
+        public static int DriveAwayCar(string plate)
+        {
+            int affectedRows = 0;
+            var sql = $"update Cars set ParkingSlotsId = NULL where Plate = '{plate.ToUpper()}'";
+            using (var connection = new SqlConnection(connString))
+            {
+                affectedRows = connection.Execute(sql);
+            }
+            return affectedRows;
+        }
         public static int InsertCar(Models.Car car)
         {
             int affectedRows = 0;
 
-            var sql = $"insert into Cars(Plate, Make, Color) values ('{car.Plate}', '{car.Make}', '{car.Color}')";
+            var sql = $"insert into Cars(Plate, Make, Color) values ('{car.Plate.ToUpper()}', '{car.Make}', '{car.Color}')";
 
             using (var connection = new SqlConnection(connString))
             {
@@ -53,10 +63,20 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             }
             return affectedRows;
         }
+        public static int RemoveCar(string plate)
+        {
+            var sql = $"DELETE FROM Car WHERE Plate = '{plate.ToUpper()}'";
+            var affectedRows = 0;
+
+            using (var connection = new SqlConnection(connString))
+                affectedRows = connection.Execute(sql);
+
+            return affectedRows;
+        }
         #endregion
 
         #region City
-        //City
+        
         public static List<Models.City> GetAllCities()
         {
             var sql = "SELECT * FROM Cities";
@@ -131,6 +151,16 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             }
             return affectedRows;
         }
+        public static int RemoveParkingHouse(string houseName)
+        {
+            var sql = $"delete from ParkingHouses where HouseName = '{houseName}'";
+            var affectedRows = 0;
+
+            using (var connection = new SqlConnection(connString))
+                affectedRows = connection.Execute(sql);
+
+            return affectedRows;
+        }
         #endregion
 
         #region Spots
@@ -198,6 +228,16 @@ namespace Homework_SQL_Parking_Menu___Mohamed
                     Console.WriteLine(e.Message);
                 }
             }
+            return affectedRows;
+        }
+        public static int RemoveParkingSlot(int slot)
+        {
+            var sql = $"delete from ParkingSlots where SlotNumber = {slot}";
+            var affectedRows = 0;
+
+            using (var connection = new SqlConnection(connString))
+                affectedRows = connection.Execute(sql);
+
             return affectedRows;
         }
         #endregion

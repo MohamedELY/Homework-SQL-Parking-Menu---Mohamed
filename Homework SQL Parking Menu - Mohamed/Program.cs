@@ -7,88 +7,93 @@ namespace Homework_SQL_Parking_Menu___Mohamed
     {
         static void Main(string[] args)
         {
-            /*
-            Stopwatch stopwatch = new Stopwatch();
+            bool runProgram = true;
+            
+            while (runProgram)
+            {
+                Prints.Print.Menu();
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        Input1();
+                        break;
+                    case "2":                       
+                        break;
+                    case "3":
+                        break;
+                    case "4":
+                        break;
+                    default:
+                        Console.WriteLine("\nWrong input Enterd");
+                        break;
+                }
+            }        
+        }
+        public static void Input1()
+        {
 
-            Console.WriteLine("Alla bilar: ");
-            var cars = DataBaseADO.GetAllCars();
-            // var cars = DataBaseDapper.GetAllCars();
+            Prints.Print.MenuShow();
 
-            stopwatch.Start();
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    Input1_1();
+                    break;
+                case "2":
+                    Input1_2();
+                    break;
+                case "3":
+                    Input1_3();
+                    break;
+
+                default:
+                    break;
+            }
+
+        }
+        public static void Input1_1()
+        {
+            var cars = DataBaseDapper.GetAllCars();
             foreach (var car in cars)
             {
-                Console.WriteLine($"{car.Id}\t{car.Plate}\t{car.Make}\t{car.Color}\t{car.ParkingSlotsId}");
+                Console.WriteLine($"{car.Id}\t {car.Make} \t{car.Plate}");
             }
-            stopwatch.Stop();
+            Console.ReadKey();
+        }
 
-            Console.WriteLine("Tid: " + stopwatch.ElapsedMilliseconds);
-            Console.WriteLine("---------------------------------------------");
-            stopwatch.Restart();
-            var allParkingspots = DataBaseADO.GetAllSpots();
-            //var allParkingspots = DataBaseDapper.GetAllSpots();
-
-            foreach (var house in allParkingspots)
-            {
-                Console.WriteLine($"{house.HouseName}   \t{house.PlatserPerHus}\t{house.Slots}");
-            }
-
-            stopwatch.Stop();
-            Console.WriteLine("Tid: " + stopwatch.ElapsedMilliseconds);
-            Console.WriteLine("----------------------------------------------");
-
-
-            // Lägg till ny bil
-            Random rnd = new Random();
-            var rNumber = rnd.Next(100, 999);
-
-            var newCar = new Models.Car
-            {
-                Plate = "XPW" + rNumber,
-                Make = "Tesla",
-                Color = "Röd"
-            };
-            int rowsAffected = DataBaseDapper.InsertCar(newCar);
-            Console.WriteLine("Antal bilar tillagda: " + rowsAffected);
-            Console.WriteLine("----------------------------------------------");
-
-            // Parkera bil
-            rowsAffected = DataBaseDapper.ParkCar(6, 12);
-            Console.WriteLine("Antal bilar parkerade: " + rowsAffected);
-
-
-            Console.WriteLine("----------------------------------------------");
-
-
-            var listOfCities = DataBaseDapper.GetAllCities();
-            foreach (var city in listOfCities)
+        public static void Input1_2()
+        {
+            var cities = DataBaseDapper.GetAllCities();
+            foreach (var city in cities)
             {
                 Console.WriteLine($"{city.Id}\t {city.CityName}");
             }
-            */
+            Console.ReadKey();
+        }
 
-            //var newCity = new Models.City { CityName = "Rio"};
+        public static void Input1_3()
+        {
 
-            /*
-            int rowsAffected = DataBaseDapper.InsertCity(newCity);
-            Console.WriteLine("Antal Städer tillagda: " + rowsAffected);
-            Console.WriteLine("----------------------------------------------");
-            */
-
-            var listOfCities = DataBaseDapper.GetAllCities();
-            foreach (var city in listOfCities)
+            switch (Console.ReadLine())
             {
-                Console.WriteLine($"{city.Id}\t {city.CityName}");
+                case "1":
+                    var allspots = DataBaseDapper.GetAllSpots();
+                    foreach (var spot in allspots)
+                    {
+                        Console.WriteLine($"{spot.PlatserPerHus}\t {spot.HouseName} \t {spot.Slots}");
+                    }
+                    break;
+                case "2":
+                    var spotsElectric = DataBaseDapper.GetElectricSpots();
+                    foreach (var spot in spotsElectric)
+                    {
+                        Console.WriteLine($"{spot.PlatserPerHus}\t {spot.HouseName} \t {spot.Slots}");
+                    }
+                    break;
+                default:
+                    break;
             }
-
-            int test1 = DataBaseDapper.RemoveCity("Ifzan");
-
-            Console.WriteLine(test1);
-            Console.WriteLine("---------------------------------------------");
-            var ParkingHouses = DataBaseDapper.GetAllParkingHouse();
-            foreach (var House in ParkingHouses)
-            {
-                Console.WriteLine($"{House.Id}\t {House.HouseName}\t     {House.CityId}");
-            }
+            Console.ReadKey();
 
         }
     }
