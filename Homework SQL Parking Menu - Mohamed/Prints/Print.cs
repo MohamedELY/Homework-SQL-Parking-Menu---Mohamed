@@ -54,5 +54,17 @@ namespace Homework_SQL_Parking_Menu___Mohamed.Prints
                    Console.Write("\t\t\t\t\tInput: ");
         }
 
+        public static void MenuCreate()
+        {
+            Logo();
+            Console.WriteLine("\n\n\t\t\t\t\t~~~~~~~~~~~ Create ~~~~~~~~~~~~");
+                Console.WriteLine("\t\t\t\t\t|  [1] Cars                   |");
+                Console.WriteLine("\t\t\t\t\t|  [2] City                   |");
+                Console.WriteLine("\t\t\t\t\t|  [3] ParkingHouse           |");
+                Console.WriteLine("\t\t\t\t\t|  [4] Spots                  |");
+                Console.WriteLine("\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                    Console.Write("\t\t\t\t\tInput: ");
+        }
+
     }
 }

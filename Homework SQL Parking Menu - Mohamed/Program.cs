@@ -25,7 +25,9 @@ namespace Homework_SQL_Parking_Menu___Mohamed
                     case "4":
                         break;
                     default:
-                        Console.WriteLine("\nWrong input Enterd");
+                        Console.WriteLine("Incorect Input!");
+                        Console.WriteLine("\nPress Enter To Continue...");
+                        Console.ReadKey(); 
                         break;
                 }
             }        
@@ -46,8 +48,10 @@ namespace Homework_SQL_Parking_Menu___Mohamed
                 case "3":
                     Input1_3();
                     break;
-
                 default:
+                    Console.WriteLine("Incorect Input!");
+                    Console.WriteLine("\nPress Enter To Continue...");
+                    Console.ReadKey();
                     break;
             }
 
@@ -59,6 +63,7 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             {
                 Console.WriteLine($"{car.Id}\t {car.Make} \t{car.Plate}");
             }
+            Console.WriteLine("\nPress Enter To Continue");
             Console.ReadKey();
         }
         public static void Input1_2()
@@ -68,6 +73,7 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             {
                 Console.WriteLine($"{city.Id}\t {city.CityName}");
             }
+            Console.WriteLine("\nPress Enter To Continue");
             Console.ReadKey();
         }
         public static void Input1_3()
@@ -92,12 +98,37 @@ namespace Homework_SQL_Parking_Menu___Mohamed
                 default:
                     break;
             }
+            Console.WriteLine("\nPress Enter To Continue");
             Console.ReadKey();
 
         }
         public static void Input2()
         {
+            Prints.Print.MenuCreate();
+            Console.ReadKey();
 
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    
+                    break;
+                case "2":
+                    
+                    break;
+                case "3":
+                    
+                    break;
+                default:
+                    Console.WriteLine("Incorect Input!");
+                    Console.WriteLine("\nPress Enter To Continue...");
+                    Console.ReadKey();
+                    break;
+            }
         }
+
+
+
+
     }
+
 }
