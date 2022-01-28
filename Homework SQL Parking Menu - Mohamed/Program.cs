@@ -21,7 +21,7 @@ namespace Homework_SQL_Parking_Menu___Mohamed
                         Input2();
                         break;
                     case "3":
-                        
+                        Input3();
                         break;
                     case "4":
                         Input4();
@@ -228,6 +228,10 @@ namespace Homework_SQL_Parking_Menu___Mohamed
                 Console.ReadKey();
             }
 
+
+        }
+        public static void Input3()
+        {
 
         }
         public static void Input4()
