@@ -211,7 +211,7 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             }
             return spotsPerHouse;
         }
-        public static int InsertParkingSlot(Models.ParkingSlot parkingSlot)
+        public static int InsertParkingSpot(Models.ParkingSlot parkingSlot)
         {
             int affectedRows = 0;
 
@@ -231,9 +231,9 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             }
             return affectedRows;
         }
-        public static int RemoveParkingSlot(int slot)
+        public static int RemoveParkingSpot(int slot)
         {
-            var sql = $"delete from ParkingSlots where SlotNumber = {slot}";
+            var sql = $"delete from ParkingSlots where Id = {slot}";
             var affectedRows = 0;
 
             using (var connection = new SqlConnection(connString))
@@ -242,8 +242,7 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             return affectedRows;
         }
         #endregion
-
-        public static int GetSpecificParkingSlotsAmount(int input)
+        public static int GetSpecificParkingSpotsAmount(int input)
         {
             string sql = @$"SELECT Count(SlotNumber)
             FROM ParkingSlots
@@ -256,6 +255,19 @@ namespace Homework_SQL_Parking_Menu___Mohamed
                 Specific = connection.ExecuteScalar<int>(sql);
             }
             return Specific;
+        }
+        public static List<Models.ParkingsInGarage> GetSpecificParkingSpots(int input)
+        {
+            string sql = @$"Select Id, ElectricOutlet 
+                           FROM ParkingSlots
+                           WHERE ParkingHouseId = {input}";
+
+            var spotList = new List<Models.ParkingsInGarage>();
+            using (var connection = new SqlConnection(connString))
+            {
+                spotList = connection.Query<Models.ParkingsInGarage>(sql).ToList();
+            }
+            return spotList;
         }
     }
 }

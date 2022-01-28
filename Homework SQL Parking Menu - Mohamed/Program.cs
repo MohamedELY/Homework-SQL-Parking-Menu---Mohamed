@@ -212,11 +212,11 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             try
             {
                 int inputId = Convert.ToInt32(Console.ReadLine());
-                spot.SlotNumber = 1 + DataBaseDapper.GetSpecificParkingSlotsAmount(inputId);
+                spot.SlotNumber = 1 + DataBaseDapper.GetSpecificParkingSpotsAmount(inputId);
                 spot.ParkingHouseId = inputId;
                 Console.WriteLine("Enter [1] For Electric, [2] For Non Electric Spot");
                 spot.ElectricOutlet = Convert.ToByte(Console.ReadLine());
-                Console.WriteLine($"\n{DataBaseDapper.InsertParkingSlot(spot)} Rows Affected");
+                Console.WriteLine($"\n{DataBaseDapper.InsertParkingSpot(spot)} Rows Affected");
                 Console.WriteLine("Press Enter To Continue...");
                 Console.ReadKey();
 
@@ -245,7 +245,7 @@ namespace Homework_SQL_Parking_Menu___Mohamed
                     Input4_3();
                     break;
                 case "4":
-                    
+                    Input4_4();
                     break;
                 default:
                     Console.WriteLine("Incorect Input!");
@@ -254,7 +254,6 @@ namespace Homework_SQL_Parking_Menu___Mohamed
                     break;
             }
         }
-
         public static void Input4_1()
         {
             var Citis = DataBaseDapper.GetAllCities();
@@ -277,9 +276,29 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             {
                 Console.WriteLine($"{house.Id}\t {house.HouseName}");
             }
-            Console.Write("\nInput A Valid Parking House Name: ");
+            Console.Write("\nInput A Valid Parking House Id: ");
 
+            try
+            {
+                int input = Convert.ToInt32(Console.ReadLine());
+                var spots = DataBaseDapper.GetSpecificParkingSpots(input);
+                Console.WriteLine($"Id\t Electric[1 = Y/ 0 = N]");
+                foreach (var spot in spots)
+                {
+                    Console.WriteLine($"{spot.Id}\t {spot.ElectricOutlet}");
+                }
+                Console.Write("\nInput A Valid Parking House Id: ");
 
+                input = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"\n{DataBaseDapper.RemoveParkingSpot(input)} Rows Affected");
+                Console.ReadKey();
+            }
+            catch
+            {
+                Console.WriteLine("The Number Enterd was not a valid number!");
+                Console.WriteLine("Press Enter To Continue...");
+                Console.ReadKey();
+            }
         }
         public static void Input4_3()
         {
@@ -292,6 +311,18 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             Console.Write("\nInput The Parking House Name: ");
 
             Console.WriteLine(DataBaseDapper.RemoveParkingHouse(Console.ReadLine()));
+            Console.WriteLine("Press Enter To Continue...");
+            Console.ReadKey();
+        }
+        public static void Input4_4()
+        {
+            var cars = DataBaseDapper.GetAllCars();
+            foreach (var car in cars)
+            {
+                Console.WriteLine($"{car.Id}\t {car.Make} \t{car.Plate}");
+            }
+            Console.Write("\nInput Plate Number (123ABC): ");
+            Console.WriteLine(DataBaseDapper.RemoveCar(Console.ReadLine()));
             Console.WriteLine("Press Enter To Continue...");
             Console.ReadKey();
         }
