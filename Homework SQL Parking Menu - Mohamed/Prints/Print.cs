@@ -32,18 +32,17 @@ namespace Homework_SQL_Parking_Menu___Mohamed.Prints
                 Console.WriteLine("\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                     Console.Write("\t\t\t\t\tInput: ");
         }
-
         public static void MenuShow()
         {
             Logo();
             Console.WriteLine("\n\n\t\t\t\t\t~~~~~~~~~~~~ Show ~~~~~~~~~~~~");
                 Console.WriteLine("\t\t\t\t\t|  [1] Cars                  |");
                 Console.WriteLine("\t\t\t\t\t|  [2] Cities                |");
-                Console.WriteLine("\t\t\t\t\t|  [3] Parking Houses        |");
+                Console.WriteLine("\t\t\t\t\t|  [3] Spots                 |");
+                Console.WriteLine("\t\t\t\t\t|  [4] Parking Houses        |");
                 Console.WriteLine("\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.Write("\t\t\t\t\tInput: ");
         }
-
         public static void MenuShowSpot()
         {
             Logo();
@@ -53,7 +52,6 @@ namespace Homework_SQL_Parking_Menu___Mohamed.Prints
                 Console.WriteLine("\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                    Console.Write("\t\t\t\t\tInput: ");
         }
-
         public static void MenuCreate()
         {
             Logo();
@@ -63,6 +61,17 @@ namespace Homework_SQL_Parking_Menu___Mohamed.Prints
                 Console.WriteLine("\t\t\t\t\t|  [3] ParkingHouse           |");
                 Console.WriteLine("\t\t\t\t\t|  [4] Spots                  |");
                 Console.WriteLine("\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                    Console.Write("\t\t\t\t\tInput: ");
+        }
+        public static void MenuDelete()
+        {
+            Logo();
+            Console.WriteLine("\n\n\t\t\t\t\t~~~~~~~~~~~~ Menu ~~~~~~~~~~~~");
+                Console.WriteLine("\t\t\t\t\t|  [1] City                  |");
+                Console.WriteLine("\t\t\t\t\t|  [2] Spots                 |");
+                Console.WriteLine("\t\t\t\t\t|  [3] ParkingHouse          |");
+                Console.WriteLine("\t\t\t\t\t|  [4] Car                   |");
+                Console.WriteLine("\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                     Console.Write("\t\t\t\t\tInput: ");
         }
 

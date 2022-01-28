@@ -186,6 +186,7 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             }
             return spotsPerHouse;
         }
+
         public static List<Models.AllSpots> GetElectricSpots()
         {
             var sql = @"
@@ -214,7 +215,7 @@ namespace Homework_SQL_Parking_Menu___Mohamed
         {
             int affectedRows = 0;
 
-            var sql = $"INSERT INTO ParkingSlots (Id, SlotNumber, ElectricOutlet, ParkingHouseId) VALUES({parkingSlot.SlotNumber}, {parkingSlot.ElectricOutlet}, {parkingSlot.ParkingHouseId})";
+            var sql = $"INSERT INTO ParkingSlots (SlotNumber, ElectricOutlet, ParkingHouseId) VALUES({parkingSlot.SlotNumber}, {parkingSlot.ElectricOutlet}, {parkingSlot.ParkingHouseId})";
 
             using (var connection = new SqlConnection(connString))
             {
@@ -241,5 +242,20 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             return affectedRows;
         }
         #endregion
+
+        public static int GetSpecificParkingSlotsAmount(int input)
+        {
+            string sql = @$"SELECT Count(SlotNumber)
+            FROM ParkingSlots
+            Where[ParkingHouseId] = {input}";
+
+
+            int Specific;
+            using (var connection = new SqlConnection(connString))
+            {
+                Specific = connection.ExecuteScalar<int>(sql);
+            }
+            return Specific;
+        }
     }
 }
