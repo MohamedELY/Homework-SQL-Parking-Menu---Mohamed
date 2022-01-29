@@ -19,7 +19,6 @@ namespace Homework_SQL_Parking_Menu___Mohamed.Prints
                 "██║░░░░░██║░░██║██║░░██║██║░╚██╗██║██║░╚███║╚██████╔╝  ██████╔╝░░░██║░░░██████╔╝░░░██║░░░███████╗██║░╚═╝░██║\n" +
                 "╚═╝░░░░░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚═╝╚═╝░░╚══╝░╚═════╝░  ╚═════╝░░░░╚═╝░░░╚═════╝░░░░╚═╝░░░╚══════╝╚═╝░░░░░╚═╝");
         }
-
         public static void Menu()
         {
             Logo();
@@ -66,7 +65,7 @@ namespace Homework_SQL_Parking_Menu___Mohamed.Prints
         public static void MenuDelete()
         {
             Logo();
-            Console.WriteLine("\n\n\t\t\t\t\t~~~~~~~~~~~~ Menu ~~~~~~~~~~~~");
+            Console.WriteLine("\n\n\t\t\t\t\t~~~~~~~~~~~ Delite ~~~~~~~~~~~");
                 Console.WriteLine("\t\t\t\t\t|  [1] City                  |");
                 Console.WriteLine("\t\t\t\t\t|  [2] Spots                 |");
                 Console.WriteLine("\t\t\t\t\t|  [3] ParkingHouse          |");
@@ -74,6 +73,14 @@ namespace Homework_SQL_Parking_Menu___Mohamed.Prints
                 Console.WriteLine("\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                     Console.Write("\t\t\t\t\tInput: ");
         }
-
+        public static void MenuInteract()
+        {
+            Logo();
+            Console.WriteLine("\n\n\t\t\t\t\t~~~~~~~~~~ Interact ~~~~~~~~~~");
+                Console.WriteLine("\t\t\t\t\t|  [1] Park Car              |");
+                Console.WriteLine("\t\t\t\t\t|  [2] Drive Away            |");
+                Console.WriteLine("\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                    Console.Write("\t\t\t\t\tInput: ");
+        }
     }
 }

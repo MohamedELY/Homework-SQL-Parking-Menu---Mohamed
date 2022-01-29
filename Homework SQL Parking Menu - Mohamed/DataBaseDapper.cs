@@ -34,10 +34,10 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             }
             return affectedRows;
         }
-        public static int DriveAwayCar(string plate)
+        public static int DriveAwayCar(int plate)
         {
             int affectedRows = 0;
-            var sql = $"update Cars set ParkingSlotsId = NULL where Plate = '{plate.ToUpper()}'";
+            var sql = $"update Cars set ParkingSlotsId = NULL where Id = '{plate}'";
             using (var connection = new SqlConnection(connString))
             {
                 affectedRows = connection.Execute(sql);
@@ -242,6 +242,7 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             return affectedRows;
         }
         #endregion
+
         public static int GetSpecificParkingSpotsAmount(int input)
         {
             string sql = @$"SELECT Count(SlotNumber)
