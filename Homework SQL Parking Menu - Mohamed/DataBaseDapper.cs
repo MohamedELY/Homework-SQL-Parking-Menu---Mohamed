@@ -34,10 +34,10 @@ namespace Homework_SQL_Parking_Menu___Mohamed
             }
             return affectedRows;
         }
-        public static int DriveAwayCar(int plate)
+        public static int DriveAwayCar(int Id)
         {
             int affectedRows = 0;
-            var sql = $"update Cars set ParkingSlotsId = NULL where Id = '{plate}'";
+            var sql = $"update Cars set ParkingSlotsId = NULL where Id = '{Id}'";
             using (var connection = new SqlConnection(connString))
             {
                 affectedRows = connection.Execute(sql);

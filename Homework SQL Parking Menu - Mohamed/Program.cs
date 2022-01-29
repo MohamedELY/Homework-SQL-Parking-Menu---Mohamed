@@ -334,7 +334,7 @@ namespace Homework_SQL_Parking_Menu___Mohamed
 
             Console.Write("\nInput The City Name: ");
 
-            Console.WriteLine(DataBaseDapper.RemoveCity(Console.ReadLine()));
+            Console.WriteLine($"\n{DataBaseDapper.RemoveCity(Console.ReadLine())} Rows Affected");
             Console.WriteLine("Press Enter To Continue...");
             Console.ReadKey();
 
@@ -380,7 +380,7 @@ namespace Homework_SQL_Parking_Menu___Mohamed
 
             Console.Write("\nInput The Parking House Name: ");
 
-            Console.WriteLine(DataBaseDapper.RemoveParkingHouse(Console.ReadLine()));
+            Console.WriteLine($"\n{DataBaseDapper.RemoveParkingHouse(Console.ReadLine())} Rows Affected");
             Console.WriteLine("Press Enter To Continue...");
             Console.ReadKey();
         }
@@ -392,7 +392,9 @@ namespace Homework_SQL_Parking_Menu___Mohamed
                 Console.WriteLine($"{car.Id}\t {car.Make} \t{car.Plate}");
             }
             Console.Write("\nInput Plate Number (123ABC): ");
-            Console.WriteLine(DataBaseDapper.RemoveCar(Console.ReadLine()));
+            Console.WriteLine($"\n{DataBaseDapper.RemoveCar(Console.ReadLine())} Rows Affected");
+
+
             Console.WriteLine("Press Enter To Continue...");
             Console.ReadKey();
         }
